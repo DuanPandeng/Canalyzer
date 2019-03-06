@@ -1,0 +1,168 @@
+/*@!Encoding:1252*/
+includes
+{
+}
+variables
+{
+    // RX messages  
+    message CAN1.0x000  toCAN1;
+    message CAN2.0x000  toCAN2;
+ 
+  
+    //HS2_Messages
+
+    message CAN2.HS2_DYN1_MDD_ETAT_2B6      Message2B6_msg;
+    message CAN2.HS2_DYN_MDD_ETAT_2F6       Message2F6_msg;
+   
+      
+
+  
+    // CHK_INI values_HS2
+    const CHK_INI_32D   =  0x02;
+    const CHK_INI_2B6   =  0x03;
+    const CHK_INI_2F6   =  0x07;
+    const CHK_INI_38D   =  0x08;
+    const CHK_INI_452   =  0x0B;
+    const CHK_INI_42D   =  0x0X;
+  // CHK_INI values_HS1
+    const CHK_INI_56E   =  0x0D;
+    const CHK_INI_349   =  0x09;
+    const CHK_INI_2ED   =  0x0D;
+}
+
+on message CAN1.*
+{  
+    byte i;
+ 
+    if (!this.SIMULATED)
+    {    
+        toCAN2.ID      = this.ID;
+        toCAN2.DLC     = this.DLC;
+        for (i=0; i<8; i++)
+        {
+            toCAN2.byte(i) = this.byte(i);
+        }   
+        output(toCAN2);	
+    }
+}
+
+on message CAN2.*
+{
+    byte i;
+ 
+    if (!this.SIMULATED)
+    {    
+        toCAN1.ID      = this.ID;
+        toCAN1.DLC     = this.DLC;
+        for (i=0; i<8; i++)
+        {
+            toCAN1.byte(i) = this.byte(i);
+        }   
+        output(toCAN1);	
+    }
+}
+
+
+on message CAN1.HS2_DYN1_MDD_ETAT_2B6
+{
+    byte chksum;
+    byte i;
+
+    // copy message
+    for (i=0; i<8; i++)
+    {
+        Message2B6_msg.byte(i) = this.byte(i);
+    } 
+    
+        // Populate message with data from panel
+   
+    if (@sysvar::SEND_CONS_DECEL_MDD == 1)
+    {
+       Message2B6_msg.CONS_DECEL_MDD.phys = @sysvar::VAL_CONS_DECEL_MDD; 
+       Message2B6_msg.TYPE_DECEL_MDD.phys = @sysvar::VAL_TYPE_DECEL_MDD;
+    //}
+    
+    //if (@sysvar::SEND_DMD_PLT_DECEL_MDD == 1)
+    //{ 
+       Message2B6_msg.DMD_PLT_DECEL_MDD.phys = @sysvar::VAL_DMD_PLT_DECEL_MDD;
+       Message2B6_msg.TYPE_DECEL_MDD.phys = @sysvar::VAL_TYPE_DECEL_MDD;
+       
+    }
+    if (@sysvar::SEND_DDE_ACT_CPL_ROUE == 1)
+    {
+       Message2B6_msg.DDE_ACT_CPL_ROUE.phys = @sysvar::VAL_DDE_ACT_CPL_ROUE;
+       Message2B6_msg.CNS_CPLE_ROUE_GMP.phys = @sysvar::VAL_CNS_CPLE_ROUE_GMP;
+       //Message2B6_msg.DDE_ACT_POT_CPL_ROUE.phys = @sysvar::VAL_DDE_ACT_POT_CPL_ROUE;
+       //Message2B6_msg.CNS_POT_CPL_ROUE_GMP.phys = @sysvar::VAL_CNS_POT_CPL_ROUE_GMP;
+       
+    }
+    if (@sysvar::SEND_ETAT_ACC == 1)
+    {
+       Message2B6_msg.ETAT_ACC.phys = @sysvar::VAL_ETAT_ACC;
+    }         
+    // construct checksum
+    chksum = CHK_INI_2B6; // Value is CHK_INI for this message as defined by PSA
+    for (i=0; i<7; i++)
+    {
+       if (@sysvar::SEND_Currupt_Message == 0)
+    {
+        chksum += Message2B6_msg.byte(i) & 0x0F;
+        chksum += (Message2B6_msg.byte(i) >> 4) & 0x0F;
+    }
+      else
+    {  
+        chksum += Message2B6_msg.byte(i) & 0x0B;
+        chksum += (Message2B6_msg.byte(i) >> 4) & 0x0B;
+    }
+    }
+    chksum += Message2B6_msg.CPT_PROCESS_4B_ACC;
+    chksum &= 0x0F;  // Checksum is modulo 16
+    chksum = 0x0F - chksum; // As per spec, need to send 0x03 - chksum
+
+    Message2B6_msg.CHKSUM_TRME_DYN_ACC = chksum; 
+     if (@sysvar::SEND_Cut_OFF == 0)
+    {
+    output(Message2B6_msg);
+    }
+}
+
+on message CAN1.HS2_DYN_MDD_ETAT_2F6
+{
+    byte chksum;
+    byte i;
+
+    // copy message
+    for (i=0; i<8; i++)
+    {
+        Message2F6_msg.byte(i) = this.byte(i);
+    } 
+    
+        // Populate message with data from panel
+    if (@sysvar::SEND_DDE_REPRISE_COND == 1)
+    {
+        Message2F6_msg.DDE_REPRISE_COND.phys = @sysvar::VAL_DDE_REPRISE_COND;
+    }
+        if (@sysvar::SEND_CONS_DECEL_MDD == 1)
+    {
+        Message2F6_msg.DMD_PLT_DECEL_MDD.phys = @sysvar::VAL_DMD_PLT_DECEL_MDD_2F6;
+    } 
+          
+    // construct checksum
+    chksum = CHK_INI_2F6; // Value is CHK_INI for this message as defined by PSA
+    for (i=0; i<6; i++)
+    {
+        chksum += Message2F6_msg.byte(i) & 0x0F;
+        chksum += (Message2F6_msg.byte(i) >> 4) & 0x0F;
+    }
+    chksum += (Message2F6_msg.byte(6) >> 4) & 0x0F;
+    chksum += (Message2F6_msg.byte(7) >> 4) & 0x0F;
+    chksum &= 0x0F;  // Checksum is modulo 16
+    chksum = 0x0F - chksum; // As per spec, need to send 0x0F - chksum
+
+    Message2F6_msg.CHKSUM_TRME_DYN_ACC2 = chksum; 
+    if (@sysvar::SEND_Cut_OFF == 0)
+    { 
+    output(Message2F6_msg);
+    }
+}
+
