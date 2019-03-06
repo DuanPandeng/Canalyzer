@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="TurnkeyGateway">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl8" Children="Controls" ControlName="Input/Output Box 8">
+      <Property Name="Name">TextBoxControl8</Property>
+      <Property Name="Size">154, 25</Property>
+      <Property Name="Location">118, 172</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">ObjValid:</Property>
+      <Property Name="DescriptionSize">56, 22</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;VAL_ObjValid;1;;;-1</Property>
+      <Property Name="TabIndex">130</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl9" Children="Controls" ControlName="Check Box 9">
+      <Property Name="Name">CheckBoxControl9</Property>
+      <Property Name="Size">46, 16</Property>
+      <Property Name="Location">34, 172</Property>
+      <Property Name="Text">Send</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_VAL_ObjValid;1;;;-1</Property>
+      <Property Name="TabIndex">129</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl8" Children="Controls" ControlName="Check Box 8">
+      <Property Name="Name">CheckBoxControl8</Property>
+      <Property Name="Size">46, 16</Property>
+      <Property Name="Location">34, 392</Property>
+      <Property Name="Text">Send</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_VAL_AdasRiLine;1;;;-1</Property>
+      <Property Name="TabIndex">126</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl7" Children="Controls" ControlName="Input/Output Box 7">
+      <Property Name="Name">TextBoxControl7</Property>
+      <Property Name="Size">160, 25</Property>
+      <Property Name="Location">118, 387</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">AdasRiLine</Property>
+      <Property Name="DescriptionSize">62, 22</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;VAL_AdasRiLine;1;;;-1</Property>
+      <Property Name="TabIndex">125</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl6" Children="Controls" ControlName="Input/Output Box 6">
+      <Property Name="Name">TextBoxControl6</Property>
+      <Property Name="Size">160, 25</Property>
+      <Property Name="Location">118, 348</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">AdasLeLine</Property>
+      <Property Name="DescriptionSize">62, 22</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;VAL_AdasLeLine;1;;;-1</Property>
+      <Property Name="TabIndex">124</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl7" Children="Controls" ControlName="Check Box 7">
+      <Property Name="Name">CheckBoxControl7</Property>
+      <Property Name="Size">46, 16</Property>
+      <Property Name="Location">34, 353</Property>
+      <Property Name="Text">Send</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_VAL_AdasLeLine;1;;;-1</Property>
+      <Property Name="TabIndex">123</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl6" Children="Controls" ControlName="Check Box 6">
+      <Property Name="Name">CheckBoxControl6</Property>
+      <Property Name="Size">94, 16</Property>
+      <Property Name="Location">118, 3</Property>
+      <Property Name="Text">SEND_CUT_OFF</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_Cut_OFF;1;;;-1</Property>
+      <Property Name="TabIndex">120</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl5" Children="Controls" ControlName="Input/Output Box 5">
+      <Property Name="Name">TextBoxControl5</Property>
+      <Property Name="Size">166, 25</Property>
+      <Property Name="Location">118, 306</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">HodWarnSeq:</Property>
+      <Property Name="DescriptionSize">68, 22</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;VAL_HodWarnSeq;1;;;-1</Property>
+      <Property Name="TabIndex">117</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl4" Children="Controls" ControlName="Input/Output Box 4">
+      <Property Name="Name">TextBoxControl4</Property>
+      <Property Name="Size">166, 25</Property>
+      <Property Name="Location">118, 270</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">ACCNPSts:</Property>
+      <Property Name="DescriptionSize">56, 22</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;VAL_ACCNPSts;1;;;-1</Property>
+      <Property Name="TabIndex">116</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl5" Children="Controls" ControlName="Check Box 5">
+      <Property Name="Name">CheckBoxControl5</Property>
+      <Property Name="Size">46, 16</Property>
+      <Property Name="Location">34, 275</Property>
+      <Property Name="Text">Send</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_VAL_ACCNPSts;1;;;-1</Property>
+      <Property Name="TabIndex">115</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2" Children="Controls" ControlName="Static Text 2">
+      <Property Name="Name">StaticTextControl2</Property>
+      <Property Name="Size">59, 13</Property>
+      <Property Name="Location">20, 236</Property>
+      <Property Name="Text">CAM_FC_03</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl4" Children="Controls" ControlName="Check Box 4">
+      <Property Name="Name">CheckBoxControl4</Property>
+      <Property Name="Size">46, 16</Property>
+      <Property Name="Location">34, 312</Property>
+      <Property Name="Text">Send</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_VAL_HodWarnSeq;1;;;-1</Property>
+      <Property Name="TabIndex">113</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3" Children="Controls" ControlName="Input/Output Box 3">
+      <Property Name="Name">TextBoxControl3</Property>
+      <Property Name="Size">166, 25</Property>
+      <Property Name="Location">118, 133</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">TakeOverReq:</Property>
+      <Property Name="DescriptionSize">74, 22</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;VAL_TakeOverReq;1;;;-1</Property>
+      <Property Name="TabIndex">112</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl3" Children="Controls" ControlName="Check Box 3">
+      <Property Name="Name">CheckBoxControl3</Property>
+      <Property Name="Size">46, 16</Property>
+      <Property Name="Location">34, 134</Property>
+      <Property Name="Text">Send</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_VAL_TakeOverReq;1;;;-1</Property>
+      <Property Name="TabIndex">111</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControl2</Property>
+      <Property Name="Size">166, 25</Property>
+      <Property Name="Location">118, 92</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">GoNotifierReq:</Property>
+      <Property Name="DescriptionSize">86, 22</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;VAL_GONotifierReq;1;;;-1</Property>
+      <Property Name="TabIndex">110</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl2" Children="Controls" ControlName="Check Box">
+      <Property Name="Name">CheckBoxControl2</Property>
+      <Property Name="Size">46, 16</Property>
+      <Property Name="Location">34, 94</Property>
+      <Property Name="Text">Send</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_VAL_GoNotifierReq;1;;;-1</Property>
+      <Property Name="TabIndex">109</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1" Children="Controls" ControlName="Check Box 2">
+      <Property Name="Name">CheckBoxControl1</Property>
+      <Property Name="Size">46, 16</Property>
+      <Property Name="Location">34, 57</Property>
+      <Property Name="Text">Send</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;SEND_VAL_Textinfo;1;;;-1</Property>
+      <Property Name="TabIndex">107</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box 2">
+      <Property Name="Name">TextBoxControl1</Property>
+      <Property Name="Size">166, 25</Property>
+      <Property Name="Location">118, 57</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">VAL_Textinfo:</Property>
+      <Property Name="DescriptionSize">80, 22</Property>
+      <Property Name="SymbolConfiguration">4;16;;;;VAL_Textinfo;1;;;-1</Property>
+      <Property Name="TabIndex">106</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text 2">
+      <Property Name="Name">StaticTextControl1</Property>
+      <Property Name="Size">59, 13</Property>
+      <Property Name="Location">20, 26</Property>
+      <Property Name="Text">RAD_FC_03</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">353, 420</Property>
+  </Object>
+</Panel>

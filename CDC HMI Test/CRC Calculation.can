@@ -1,0 +1,107 @@
+/*@!Encoding:936*/
+includes
+{
+}
+
+variables
+{
+  byte CRC;
+  int f,b;
+  byte MsgByte[8];
+}
+
+//Function to Calculate CRC8
+//caculation example: data bytes: 11 result: EB
+//caculation example: data bytes: F2 01 83 result: 37
+//caculation example: data bytes: 0F AA 00 55 result: 79
+//caculation example: data bytes: 00 FF 55 11 result: B8
+//caculation example: data bytes: 11 22 33 44 55 66 77 result: D0
+//caculation example: data bytes: 32 B2 C5 12 00 35 93 result: 7B
+byte CRC8(byte data[],int length)
+{
+  CRC = 0xFF;
+  for(f=0;f<length;f++)
+  {
+    CRC ^= data[f];
+    for(b=0;b<8;b++)
+    {
+      if((CRC&0x80)!=0)
+      {
+        CRC <<= 1;
+        CRC ^= 0x11D;
+       }
+      else
+        CRC <<= 1;
+     }
+  }
+  return ~CRC;
+}
+
+byte CRC8(message * Msg)
+{
+  MsgByte[0]=Msg.byte(1);
+  MsgByte[1]=Msg.byte(2);
+  MsgByte[2]=Msg.byte(3);
+  MsgByte[3]=Msg.byte(4);
+  MsgByte[4]=Msg.byte(5);
+  MsgByte[5]=Msg.byte(6);
+  MsgByte[6]=Msg.byte(7);
+
+  
+  return CRC8(MsgByte,Msg.dlc-1);
+}
+
+byte ErrorCRC8(message * Msg)
+{
+  MsgByte[0]=Msg.byte(0);
+  MsgByte[1]=Msg.byte(1);
+  MsgByte[2]=Msg.byte(2);
+  MsgByte[3]=Msg.byte(3);
+  MsgByte[4]=Msg.byte(4);
+  MsgByte[5]=Msg.byte(5);
+  MsgByte[6]=Msg.byte(6);
+  
+  return CRC8(MsgByte,Msg.dlc-1);
+}
+
+byte CRC8_byte7(message * Msg)
+{
+  MsgByte[0]=Msg.byte(0);
+  MsgByte[1]=Msg.byte(1);
+  MsgByte[2]=Msg.byte(2);
+  MsgByte[3]=Msg.byte(3);
+  MsgByte[4]=Msg.byte(4);
+  MsgByte[5]=Msg.byte(5);
+  MsgByte[6]=Msg.byte(6);
+  
+  return CRC8(MsgByte,Msg.dlc-1);
+}
+
+byte ErrorCRC8_byte7(message * Msg)
+{
+  MsgByte[0]=Msg.byte(1);
+  MsgByte[1]=Msg.byte(2);
+  MsgByte[2]=Msg.byte(3);
+  MsgByte[3]=Msg.byte(4);
+  MsgByte[4]=Msg.byte(5);
+  MsgByte[5]=Msg.byte(6);
+  MsgByte[6]=Msg.byte(7);
+  
+  return CRC8(MsgByte,Msg.dlc-1);
+}
+
+int CRC_Check(message * Msg)//if crc is correct, return 1, else return 0
+{
+  if(Msg.byte(0)==CRC8(Msg))
+    return 1;
+  else
+    return 0;
+}
+
+int CRC_Check_byte7(message * Msg)//if crc is correct, return 1, else return 0
+{
+  if(Msg.byte(7)==CRC8_byte7(Msg))
+    return 1;
+  else
+    return 0;
+}

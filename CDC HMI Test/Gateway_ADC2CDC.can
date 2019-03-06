@@ -1,0 +1,132 @@
+/*@!Encoding:1252*/
+includes
+{
+  #include "C:\Users\pandeng.duan\Desktop\HMI\Canalyzer\CRC Calculation.can"
+}
+variables
+{
+    // RX messages  
+    message CAN1.0x000  toCAN1;
+    message CAN2.0x000  toCAN2;
+ 
+  
+    //HS2_Messages
+
+    message CAN2.RAD_FC_03  Message0x7E_msg;
+    message CAN2.CAM_FC_03  Message0x228_msg;
+   
+}
+
+on message CAN1.*
+{  
+    byte i;
+ 
+    if (!this.SIMULATED)
+    {    
+        toCAN2.ID      = this.ID;
+        toCAN2.DLC     = this.DLC;
+        for (i=0; i<8; i++)
+        {
+            toCAN2.byte(i) = this.byte(i);
+        }   
+        output(toCAN2);	
+    }
+}
+
+on message CAN2.*
+{
+    byte i;
+ 
+    if (!this.SIMULATED)
+    {    
+        toCAN1.ID      = this.ID;
+        toCAN1.DLC     = this.DLC;
+        for (i=0; i<8; i++)
+        {
+            toCAN1.byte(i) = this.byte(i);
+        }   
+        output(toCAN1);	
+    }
+}
+
+on message CAN1.CAM_FC_03
+{
+    byte i;
+
+    // copy message
+    for (i=0; i<8; i++)
+    {
+        Message0x228_msg.byte(i) = this.byte(i);
+    } 
+    
+    
+    if (@sysvar::SEND_VAL_ACCNPSts == 1)
+    {
+       Message0x228_msg.ACCNPSts.phys = @sysvar::VAL_ACCNPSts; 
+    } 
+    
+    if (@sysvar::SEND_VAL_HodWarnSeq == 1)
+    {
+       Message0x228_msg.HodWarnSeq.phys = @sysvar::VAL_HodWarnSeq; 
+    }
+    
+    if (@sysvar::SEND_VAL_AdasLeLine == 1)
+    {
+       Message0x228_msg.AdasLeLine.phys = @sysvar::VAL_AdasLeLine; 
+    } 
+    
+    if (@sysvar::SEND_VAL_AdasRiLine == 1)
+    {
+       Message0x228_msg.AdasRiLine.phys = @sysvar::VAL_AdasRiLine; 
+    }   
+        
+    
+    Message0x228_msg.CAM_FC_03_CRC= CRC8_byte7(Message0x228_msg);
+    if (@sysvar::SEND_Cut_OFF == 0)
+    {
+    output(Message0x228_msg);
+    }
+}
+
+on message CAN1.RAD_FC_03
+{
+    byte i;
+
+    // copy message
+    for (i=0; i<8; i++)
+    {
+        Message0x7E_msg.byte(i) = this.byte(i);
+    } 
+    
+    // Populate message with data from panel
+   
+    if (@sysvar::SEND_VAL_Textinfo == 1)
+    {
+       Message0x7E_msg.Textinfo.phys = @sysvar::VAL_Textinfo; 
+    } 
+    
+    if (@sysvar::SEND_VAL_GoNotifierReq == 1)
+    {
+       Message0x7E_msg.GoNotifierOnOffSts.phys = @sysvar::VAL_GONotifierReq; 
+    } 
+    
+    if (@sysvar::SEND_VAL_TakeOverReq == 1)
+    {
+       Message0x7E_msg.TakeOverReq.phys = @sysvar::VAL_TakeOverReq; 
+    } 
+
+    if (@sysvar::SEND_VAL_ObjValid == 1)
+    {
+       Message0x7E_msg.ObjValid.phys = @sysvar::VAL_ObjValid; 
+    } 
+      
+    Message0x7E_msg.RAD_FC_03_CRC= CRC8(Message0x7E_msg);
+
+     if (@sysvar::SEND_Cut_OFF == 0)
+    {
+    output(Message0x7E_msg);
+    }
+    
+
+}
+
